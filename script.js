@@ -122,6 +122,7 @@ if (!response.ok || data.error) {
                 if (errorEl) errorEl.classList.remove('show');
                 cnpjInfoDisplay.style.display = 'block';
                 waitingPayment.style.display = 'block';
+                startCountdown();
                 showSuccessNotification('CNPJ encontrado com sucesso!');
 
                 
@@ -172,7 +173,41 @@ const infoItems = [
             if (paymentCnpjInfoGrid) paymentCnpjInfoGrid.innerHTML = htmlContent;
         }
 
-        // Lógica de cronômetro removida conforme solicitação do usuário.
+        // ===== LÓGICA DE CONTAGEM REGRESSIVA =====
+        let countdownInterval;
+        const initialTimeSeconds = 3 * 60 + 35; // 3:35 em segundos
+
+        function startCountdown() {
+            let timeRemaining = initialTimeSeconds;
+            const timerDisplay = document.getElementById('countdownTimer');
+
+            function updateTimer() {
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                
+                const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                
+                if (timerDisplay) {
+                    timerDisplay.textContent = formattedTime;
+                }
+
+                if (timeRemaining <= 0) {
+                    clearInterval(countdownInterval);
+                    // Opcional: Adicionar lógica para o que acontece quando o tempo acaba (ex: bloquear)
+                    console.log("Contagem regressiva finalizada. Ação de bloqueio/negativação pode ser acionada.");
+                } else {
+                    timeRemaining--;
+                }
+            }
+
+            // Garante que o timer comece imediatamente
+            updateTimer();
+            countdownInterval = setInterval(updateTimer, 1000);
+        }
+
+        // A contagem regressiva deve ser iniciada quando o alerta de pagamento é exibido.
+        // O alerta é exibido dentro de handleCNPJLookup na linha 124.
+        // Vamos adicionar a chamada para startCountdown() lá.
 
         function showCNPJError(message) {
             const cnpjInput = document.getElementById('cnpj');
