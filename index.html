@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -108,11 +109,11 @@
                             <div class="payment-alert-box" id="waitingPayment" style="display: none;">
                                 <div class="payment-alert-content">
                                     <div class="payment-alert-header">
-                                        <i class="fas fa-hourglass-half payment-alert-icon"></i>
+                                        <div class="spinner-circular-icon"></div>
                                         <h4 class="payment-alert-title">Aguardando pagamento da taxa de abertura</h4>
                                     </div>
                                     <p class="payment-alert-subtitle">
-                                        O não pagamento em <span class="timer-display"><span class="spinner-circular"></span></span> acarretará no bloqueio do CNPJ e negativação do CPF do titular.
+                                        O não pagamento em <span class="timer-display" id="countdownTimer">03:35</span> acarretará no bloqueio do CNPJ e negativação do CPF do titular.
                                     </p>
                                 </div>
                             </div>
