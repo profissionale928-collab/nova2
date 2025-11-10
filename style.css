@@ -955,3 +955,67 @@
         }
             padding: 20px;
         }
+/* ===== SPINNER CIRCULAR PARA O ALERTA DE PAGAMENTO (SUBSTITUI O ÍCONE) ===== */
+.spinner-circular-icon {
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid var(--white);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Ajuste para o timer display */
+.timer-display {
+    font-weight: 700;
+    color: var(--error-color); /* Para dar um senso de urgência */
+    font-size: 1.1em;
+    display: inline-block;
+    min-width: 45px; /* Garante que o espaço não mude durante a contagem */
+    text-align: center;
+}
+
+/* ===== ALERTA DE PAGAMENTO (URGÊNCIA) ===== */
+.payment-alert-box {
+    background: var(--error-color); /* Fundo vermelho escuro para urgência */
+    color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: var(--shadow-md);
+}
+
+.payment-alert-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-alert-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.payment-alert-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.payment-alert-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--white);
+}
+
+.payment-alert-subtitle {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+}
